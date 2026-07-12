@@ -1,0 +1,6 @@
+{
+  "name": "James ERP",
+  "description": "An enterprise-grade ERP SaaS platform called James ERP, featuring full-stack multi-company modules (HR, Finance, Inventory, Purchase, Sales, Projects, Assets, Help Desk, Reports), dynamic RBAC, full global search, and AI-powered business analytics using Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

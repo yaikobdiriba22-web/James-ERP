@@ -1,0 +1,1827 @@
+{
+  "companies": [
+    {
+      "id": "comp-james-holdings",
+      "name": "James Industries Holdings PLC",
+      "tin": "0012457893",
+      "vatRegistered": true,
+      "currency": "ETB",
+      "address": "Bole Road, Ward 03, House 405, Addis Ababa, Ethiopia",
+      "phone": "+251116612345",
+      "email": "info@jamesholdings.com"
+    },
+    {
+      "id": "comp-hawassa-agro",
+      "name": "Hawassa Agro-Processing Corp",
+      "tin": "0098765432",
+      "vatRegistered": true,
+      "currency": "ETB",
+      "address": "Hawassa Industrial Park, Block B, Hawassa, Ethiopia",
+      "phone": "+251462205678",
+      "email": "operations@hawassaagro.com"
+    }
+  ],
+  "branches": [
+    {
+      "id": "branch-addis-hq",
+      "companyId": "comp-james-holdings",
+      "name": "Addis Ababa Headquarters",
+      "address": "Bole Road, Near Friendship Building, Addis Ababa",
+      "phone": "+251116612345"
+    },
+    {
+      "id": "branch-adama",
+      "companyId": "comp-james-holdings",
+      "name": "Adama Logistics & Distribution",
+      "address": "Adama Highway Interchange Road, Adama",
+      "phone": "+251221118990"
+    },
+    {
+      "id": "branch-hawassa-plant",
+      "companyId": "comp-hawassa-agro",
+      "name": "Hawassa Manufacturing Plant",
+      "address": "Industrial Park Rd, Hawassa",
+      "phone": "+251462205678"
+    }
+  ],
+  "warehouses": [
+    {
+      "id": "wh-addis-main",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-addis-hq",
+      "name": "Addis Ababa Main Logistics Warehouse",
+      "address": "Kaliti Industrial Zone, Addis Ababa"
+    },
+    {
+      "id": "wh-adama-dist",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-adama",
+      "name": "Adama Central Distribution Hub",
+      "address": "Expressway Exit, Adama"
+    },
+    {
+      "id": "wh-hawassa-cold",
+      "companyId": "comp-hawassa-agro",
+      "branchId": "branch-hawassa-plant",
+      "name": "Hawassa Cold-Storage & Sorting Facility",
+      "address": "Industrial Park, Block 12, Hawassa"
+    }
+  ],
+  "departments": [
+    {
+      "id": "dept-exec",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-addis-hq",
+      "name": "Executive Suite"
+    },
+    {
+      "id": "dept-finance",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-addis-hq",
+      "name": "Finance & Accounts"
+    },
+    {
+      "id": "dept-hr",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-addis-hq",
+      "name": "Human Resources"
+    },
+    {
+      "id": "dept-sales",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-addis-hq",
+      "name": "Sales & Marketing"
+    },
+    {
+      "id": "dept-ops",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-adama",
+      "name": "Logistics Operations"
+    },
+    {
+      "id": "dept-hawassa-ops",
+      "companyId": "comp-hawassa-agro",
+      "branchId": "branch-hawassa-plant",
+      "name": "Production & QC"
+    }
+  ],
+  "employees": [
+    {
+      "id": "emp-admin-super",
+      "name": "Admin Portal",
+      "email": "admin@jameserp.com",
+      "phone": "+251911990011",
+      "role": "Super Admin",
+      "departmentId": "dept-exec",
+      "branchId": "branch-addis-hq",
+      "companyId": "comp-james-holdings",
+      "hireDate": "2018-06-01",
+      "salary": 200000,
+      "status": "Active",
+      "attendance": [
+        {
+          "id": "att-admin-1",
+          "employeeId": "emp-admin-super",
+          "date": "2026-07-10",
+          "checkIn": "08:00",
+          "checkOut": "18:00",
+          "status": "Present"
+        }
+      ],
+      "leaves": [],
+      "performance": [],
+      "training": []
+    },
+    {
+      "id": "emp-james-ceo",
+      "name": "James Kebede",
+      "email": "ceo@jameserp.com",
+      "phone": "+251911223344",
+      "role": "CEO",
+      "departmentId": "dept-exec",
+      "branchId": "branch-addis-hq",
+      "companyId": "comp-james-holdings",
+      "hireDate": "2020-01-15",
+      "salary": 150000,
+      "status": "Active",
+      "attendance": [
+        {
+          "id": "att-1",
+          "employeeId": "emp-james-ceo",
+          "date": "2026-07-10",
+          "checkIn": "08:15",
+          "checkOut": "17:45",
+          "status": "Present"
+        },
+        {
+          "id": "att-2",
+          "employeeId": "emp-james-ceo",
+          "date": "2026-07-11",
+          "checkIn": "08:20",
+          "checkOut": "17:30",
+          "status": "Present"
+        },
+        {
+          "id": "att-ad73b2aa",
+          "employeeId": "emp-james-ceo",
+          "date": "2026-07-12",
+          "checkIn": "08:30",
+          "status": "Present"
+        },
+        {
+          "id": "att-f3a7eaf1",
+          "employeeId": "emp-james-ceo",
+          "date": "2026-07-12",
+          "checkIn": "08:30",
+          "status": "Present"
+        }
+      ],
+      "leaves": [],
+      "performance": [
+        {
+          "id": "perf-1",
+          "employeeId": "emp-james-ceo",
+          "reviewDate": "2025-12-20",
+          "reviewerId": "board-chair",
+          "score": 5,
+          "comments": "Exceptional leadership pushing digital transformation across Ethiopia.",
+          "goals": [
+            "Expand to regional hubs",
+            "Implement ERP fully"
+          ]
+        }
+      ],
+      "training": []
+    },
+    {
+      "id": "emp-selam-hr",
+      "name": "Selamawit Alene",
+      "email": "hr@jameserp.com",
+      "phone": "+251911556677",
+      "role": "HR",
+      "departmentId": "dept-hr",
+      "branchId": "branch-addis-hq",
+      "companyId": "comp-james-holdings",
+      "hireDate": "2022-03-01",
+      "salary": 45000,
+      "status": "Active",
+      "attendance": [
+        {
+          "id": "att-3",
+          "employeeId": "emp-selam-hr",
+          "date": "2026-07-10",
+          "checkIn": "08:02",
+          "checkOut": "17:05",
+          "status": "Present"
+        },
+        {
+          "id": "att-4",
+          "employeeId": "emp-selam-hr",
+          "date": "2026-07-11",
+          "checkIn": "08:10",
+          "checkOut": "17:00",
+          "status": "Present"
+        }
+      ],
+      "leaves": [
+        {
+          "id": "leave-1",
+          "employeeId": "emp-selam-hr",
+          "leaveType": "Annual",
+          "startDate": "2026-08-10",
+          "endDate": "2026-08-15",
+          "days": 5,
+          "reason": "Family vacation to Langano",
+          "status": "Approved"
+        }
+      ],
+      "performance": [
+        {
+          "id": "perf-2",
+          "employeeId": "emp-selam-hr",
+          "reviewDate": "2025-12-15",
+          "reviewerId": "emp-james-ceo",
+          "score": 4,
+          "comments": "Maintains high employee retention and smooth recruiting pipeline.",
+          "goals": [
+            "Roll out employee self-service",
+            "Launch leadership training"
+          ]
+        }
+      ],
+      "training": [
+        {
+          "id": "tr-1",
+          "title": "Modern HR Compliance in East Africa",
+          "description": "Updated labor regulations and employee benefits mapping.",
+          "date": "2026-04-12",
+          "durationHours": 16,
+          "status": "Completed",
+          "employees": [
+            "emp-selam-hr"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "emp-yohannes-acc",
+      "name": "Yohannes Demissie",
+      "email": "accounting@jameserp.com",
+      "phone": "+251922334455",
+      "role": "Accountant",
+      "departmentId": "dept-finance",
+      "branchId": "branch-addis-hq",
+      "companyId": "comp-james-holdings",
+      "hireDate": "2021-06-15",
+      "salary": 55000,
+      "status": "Active",
+      "attendance": [
+        {
+          "id": "att-5",
+          "employeeId": "emp-yohannes-acc",
+          "date": "2026-07-10",
+          "checkIn": "08:30",
+          "checkOut": "18:00",
+          "status": "Present"
+        },
+        {
+          "id": "att-6",
+          "employeeId": "emp-yohannes-acc",
+          "date": "2026-07-11",
+          "checkIn": "08:45",
+          "checkOut": "17:30",
+          "status": "Present"
+        }
+      ],
+      "leaves": [],
+      "performance": [],
+      "training": []
+    },
+    {
+      "id": "emp-almaz-sales",
+      "name": "Almaz Tesfaye",
+      "email": "sales@jameserp.com",
+      "phone": "+251933445566",
+      "role": "Sales",
+      "departmentId": "dept-sales",
+      "branchId": "branch-addis-hq",
+      "companyId": "comp-james-holdings",
+      "hireDate": "2023-01-10",
+      "salary": 35000,
+      "status": "Active",
+      "attendance": [
+        {
+          "id": "att-7",
+          "employeeId": "emp-almaz-sales",
+          "date": "2026-07-10",
+          "checkIn": "08:55",
+          "checkOut": "17:15",
+          "status": "Present"
+        },
+        {
+          "id": "att-8",
+          "employeeId": "emp-almaz-sales",
+          "date": "2026-07-11",
+          "checkIn": "09:05",
+          "checkOut": "17:00",
+          "status": "Present"
+        },
+        {
+          "id": "att-bd6dc4c2",
+          "employeeId": "emp-almaz-sales",
+          "date": "2026-07-12",
+          "checkIn": "08:30",
+          "status": "Present"
+        }
+      ],
+      "leaves": [],
+      "performance": [],
+      "training": []
+    },
+    {
+      "id": "emp-chala-inventory",
+      "name": "Chala Bekele",
+      "email": "inventory@jameserp.com",
+      "phone": "+251944556677",
+      "role": "Inventory Officer",
+      "departmentId": "dept-ops",
+      "branchId": "branch-adama",
+      "companyId": "comp-james-holdings",
+      "hireDate": "2022-09-01",
+      "salary": 28000,
+      "status": "Active",
+      "attendance": [
+        {
+          "id": "att-9",
+          "employeeId": "emp-chala-inventory",
+          "date": "2026-07-10",
+          "checkIn": "07:55",
+          "checkOut": "16:45",
+          "status": "Present"
+        },
+        {
+          "id": "att-10",
+          "employeeId": "emp-chala-inventory",
+          "date": "2026-07-11",
+          "checkIn": "08:00",
+          "checkOut": "17:00",
+          "status": "Present"
+        }
+      ],
+      "leaves": [],
+      "performance": [],
+      "training": []
+    }
+  ],
+  "chartOfAccounts": [
+    {
+      "id": "coa-cash",
+      "companyId": "comp-james-holdings",
+      "code": "1010",
+      "name": "Cash in Bank (CBE Birr/Telebirr)",
+      "category": "Asset",
+      "balance": 14500000.5
+    },
+    {
+      "id": "coa-ar",
+      "companyId": "comp-james-holdings",
+      "code": "1200",
+      "name": "Accounts Receivable",
+      "category": "Asset",
+      "balance": 3400000
+    },
+    {
+      "id": "coa-inv",
+      "companyId": "comp-james-holdings",
+      "code": "1300",
+      "name": "Inventory Asset",
+      "category": "Asset",
+      "balance": 8500000
+    },
+    {
+      "id": "coa-equip",
+      "companyId": "comp-james-holdings",
+      "code": "1500",
+      "name": "Machinery & Equipment",
+      "category": "Asset",
+      "balance": 12000000
+    },
+    {
+      "id": "coa-ap",
+      "companyId": "comp-james-holdings",
+      "code": "2010",
+      "name": "Accounts Payable",
+      "category": "Liability",
+      "balance": -2100000
+    },
+    {
+      "id": "coa-tax",
+      "companyId": "comp-james-holdings",
+      "code": "2200",
+      "name": "VAT & Sales Taxes Payable",
+      "category": "Liability",
+      "balance": -850000
+    },
+    {
+      "id": "coa-capital",
+      "companyId": "comp-james-holdings",
+      "code": "3000",
+      "name": "Share Capital",
+      "category": "Equity",
+      "balance": -20000000
+    },
+    {
+      "id": "coa-re",
+      "companyId": "comp-james-holdings",
+      "code": "3500",
+      "name": "Retained Earnings",
+      "category": "Equity",
+      "balance": -5450000.5
+    },
+    {
+      "id": "coa-sales",
+      "companyId": "comp-james-holdings",
+      "code": "4000",
+      "name": "Sales Revenue",
+      "category": "Revenue",
+      "balance": -28400000
+    },
+    {
+      "id": "coa-misc-rev",
+      "companyId": "comp-james-holdings",
+      "code": "4500",
+      "name": "Other Operating Revenue",
+      "category": "Revenue",
+      "balance": -1500000
+    },
+    {
+      "id": "coa-cogs",
+      "companyId": "comp-james-holdings",
+      "code": "5000",
+      "name": "Cost of Goods Sold (COGS)",
+      "category": "Expense",
+      "balance": 14200000
+    },
+    {
+      "id": "coa-salaries",
+      "companyId": "comp-james-holdings",
+      "code": "5100",
+      "name": "Salaries & Benefits",
+      "category": "Expense",
+      "balance": 3200000
+    },
+    {
+      "id": "coa-rent",
+      "companyId": "comp-james-holdings",
+      "code": "5200",
+      "name": "Rent & Facilities Expense",
+      "category": "Expense",
+      "balance": 1800000
+    },
+    {
+      "id": "coa-deprec",
+      "companyId": "comp-james-holdings",
+      "code": "5500",
+      "name": "Depreciation Expense",
+      "category": "Expense",
+      "balance": 1100000
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-coffee-raw",
+      "companyId": "comp-james-holdings",
+      "sku": "AGR-COF-PRM",
+      "name": "Arabica Coffee Beans (Premium Grade A)",
+      "category": "Agribusiness Products",
+      "barcode": "690123456789",
+      "qrCode": "QR-AGR-COF-PRM",
+      "description": "Export-quality hand-sorted Arabica coffee beans harvested from Yirgacheffe highlands.",
+      "price": 380,
+      "cost": 210,
+      "stock": {
+        "wh-addis-main": 15000,
+        "wh-adama-dist": 5000,
+        "branch-addis-hq": 12
+      },
+      "reorderPoint": 2500
+    },
+    {
+      "id": "prod-teff-white",
+      "companyId": "comp-james-holdings",
+      "sku": "AGR-TEF-WHT",
+      "name": "Magna Teff Flour (Super White 50kg)",
+      "category": "Agribusiness Products",
+      "barcode": "690123456712",
+      "qrCode": "QR-AGR-TEF-WHT",
+      "description": "Premium stone-ground white magna teff, organic and gluten-free.",
+      "price": 4500,
+      "cost": 3100,
+      "stock": {
+        "wh-addis-main": 4000,
+        "wh-adama-dist": 3000
+      },
+      "reorderPoint": 1000
+    },
+    {
+      "id": "prod-pump-solar",
+      "companyId": "comp-james-holdings",
+      "sku": "TEC-SOL-PMP",
+      "name": "Solar Water Pump System (120W DC)",
+      "category": "Renewable Energy Equipment",
+      "barcode": "840156900112",
+      "qrCode": "QR-TEC-SOL-PMP",
+      "description": "High-efficiency brushless submersible solar water pump for modern smart farming irrigation.",
+      "price": 24500,
+      "cost": 16800,
+      "stock": {
+        "wh-addis-main": 150,
+        "wh-adama-dist": 80
+      },
+      "reorderPoint": 20
+    },
+    {
+      "id": "prod-box-pack",
+      "companyId": "comp-hawassa-agro",
+      "sku": "PKG-BOX-IND",
+      "name": "Corrugated Industrial Packing Box (Heavy Duty)",
+      "category": "Packaging Materials",
+      "barcode": "750188904509",
+      "qrCode": "QR-PKG-BOX-IND",
+      "description": "Eco-friendly heavy-duty double-wall corrugated cardboard box for regional distribution cargo.",
+      "price": 65,
+      "cost": 38,
+      "stock": {
+        "wh-hawassa-cold": 45000
+      },
+      "reorderPoint": 5000
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "sup-yirgacheffe-union",
+      "companyId": "comp-james-holdings",
+      "name": "Yirgacheffe Coffee Farmers Cooperative Union",
+      "contactPerson": "Ato Tadesse Gebre",
+      "phone": "+251462201122",
+      "email": "info@yirgacheffeunion.com",
+      "tin": "0045127896",
+      "address": "Dilla, Gedeo Zone, SNNPR, Ethiopia"
+    },
+    {
+      "id": "sup-abyssinia-trading",
+      "companyId": "comp-james-holdings",
+      "name": "Abyssinia Agri-Tech Trading PLC",
+      "contactPerson": "W/ro Martha Kassa",
+      "phone": "+251115518900",
+      "email": "sales@abyssiniatrading.com",
+      "tin": "0052341109",
+      "address": "Saris, Kera Industrial Area, Addis Ababa"
+    }
+  ],
+  "customers": [
+    {
+      "id": "cust-hilton-addis",
+      "companyId": "comp-james-holdings",
+      "name": "Hilton Addis Ababa",
+      "contactPerson": "Chef Daniel Jenkins",
+      "phone": "+251115170000",
+      "email": "daniel.jenkins@hiltonaddis.com",
+      "tin": "0022441166",
+      "address": "Menelik II Avenue, Addis Ababa, Ethiopia"
+    },
+    {
+      "id": "cust-ethiopian-airlines",
+      "companyId": "comp-james-holdings",
+      "name": "Ethiopian Airlines Catering Division",
+      "contactPerson": "W/ro Tsige Hailu",
+      "phone": "+251116179922",
+      "email": "tsigeh@ethiopianairlines.com",
+      "tin": "0011559988",
+      "address": "Bole International Airport Complex, Addis Ababa"
+    }
+  ],
+  "leads": [
+    {
+      "id": "lead-1",
+      "companyId": "comp-james-holdings",
+      "name": "Fana Coffee Roasters PLC",
+      "company": "Fana Roasters Group",
+      "email": "procurement@fanaroasters.com",
+      "phone": "+251911889900",
+      "status": "Qualified",
+      "source": "Social Media",
+      "assignedToId": "emp-almaz-sales",
+      "assignedToName": "Almaz Tesfaye"
+    },
+    {
+      "id": "lead-2",
+      "companyId": "comp-james-holdings",
+      "name": "Rift Valley Agriculture Development",
+      "company": "Rift Valley Corp",
+      "email": "tariku@riftvalleyagri.com",
+      "phone": "+251920334455",
+      "status": "New",
+      "source": "Web",
+      "assignedToId": "emp-almaz-sales",
+      "assignedToName": "Almaz Tesfaye"
+    }
+  ],
+  "salesOrders": [
+    {
+      "id": "so-2026-001",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-addis-hq",
+      "customerId": "cust-hilton-addis",
+      "customerName": "Hilton Addis Ababa",
+      "date": "2026-07-05",
+      "items": [
+        {
+          "productId": "prod-coffee-raw",
+          "productName": "Arabica Coffee Beans (Premium Grade A)",
+          "quantity": 500,
+          "unitPrice": 380,
+          "total": 190000
+        },
+        {
+          "productId": "prod-teff-white",
+          "productName": "Magna Teff Flour (Super White 50kg)",
+          "quantity": 20,
+          "unitPrice": 4500,
+          "total": 90000
+        }
+      ],
+      "totalAmount": 280000,
+      "status": "Paid",
+      "shippingAddress": "Hilton Addis Main Store Room, Menelik II Avenue"
+    },
+    {
+      "id": "so-2026-002",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-addis-hq",
+      "customerId": "cust-ethiopian-airlines",
+      "customerName": "Ethiopian Airlines Catering Division",
+      "date": "2026-07-09",
+      "items": [
+        {
+          "productId": "prod-teff-white",
+          "productName": "Magna Teff Flour (Super White 50kg)",
+          "quantity": 150,
+          "unitPrice": 4500,
+          "total": 675000
+        }
+      ],
+      "totalAmount": 675000,
+      "status": "Shipped",
+      "shippingAddress": "Catering Cargo Terminal Gate 4, Bole Airport"
+    }
+  ],
+  "purchaseOrders": [
+    {
+      "id": "po-2026-001",
+      "companyId": "comp-james-holdings",
+      "supplierId": "sup-yirgacheffe-union",
+      "supplierName": "Yirgacheffe Coffee Farmers Cooperative Union",
+      "date": "2026-07-01",
+      "items": [
+        {
+          "productId": "prod-coffee-raw",
+          "productName": "Arabica Coffee Beans (Premium Grade A)",
+          "quantity": 10000,
+          "unitPrice": 210,
+          "total": 2100000
+        }
+      ],
+      "totalAmount": 2100000,
+      "status": "Paid"
+    },
+    {
+      "id": "po-2026-002",
+      "companyId": "comp-james-holdings",
+      "supplierId": "sup-abyssinia-trading",
+      "supplierName": "Abyssinia Agri-Tech Trading PLC",
+      "date": "2026-07-08",
+      "items": [
+        {
+          "productId": "prod-pump-solar",
+          "productName": "Solar Water Pump System (120W DC)",
+          "quantity": 50,
+          "unitPrice": 16800,
+          "total": 840000
+        }
+      ],
+      "totalAmount": 840000,
+      "status": "Ordered"
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "companyId": "comp-james-holdings",
+      "name": "Adama Depot Solar Modernization",
+      "description": "Installing clean smart-grid active solar generation arrays to feed cooling chillers fully.",
+      "startDate": "2026-06-01",
+      "endDate": "2026-10-30",
+      "status": "In Progress",
+      "managerId": "emp-james-ceo",
+      "managerName": "James Kebede",
+      "budget": 1250000,
+      "milestones": [
+        {
+          "id": "m-1",
+          "title": "Civil Site Prep & Frame Foundation",
+          "dueDate": "2026-07-15",
+          "status": "Completed"
+        },
+        {
+          "id": "m-2",
+          "title": "Smart Sub-station Integration",
+          "dueDate": "2026-08-30",
+          "status": "Pending"
+        },
+        {
+          "id": "m-3",
+          "title": "Live Chiller Testing",
+          "dueDate": "2026-10-15",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "proj-2",
+      "companyId": "comp-james-holdings",
+      "name": "Magna Teff Regional Sourcing Hub",
+      "description": "Setting up collaborative collection centers near Gojjam and Shoa to cut supply-chain costs.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-02-15",
+      "status": "Planning",
+      "managerId": "emp-chala-inventory",
+      "managerName": "Chala Bekele",
+      "budget": 780000,
+      "milestones": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-1",
+      "projectId": "proj-1",
+      "projectName": "Adama Depot Solar Modernization",
+      "title": "Configure Solar Panel Frame Brackets",
+      "description": "Assemble and torque down galvanized aluminum mounting brackets on roof structures.",
+      "assigneeId": "emp-chala-inventory",
+      "assigneeName": "Chala Bekele",
+      "startDate": "2026-06-15",
+      "dueDate": "2026-07-12",
+      "status": "Review",
+      "priority": "High",
+      "timeSpentMinutes": 720
+    },
+    {
+      "id": "task-2",
+      "projectId": "proj-1",
+      "projectName": "Adama Depot Solar Modernization",
+      "title": "Procure SUB-100 Inverter Modules",
+      "description": "Confirm invoice delivery details from suppliers and log customs clearances.",
+      "assigneeId": "emp-yohannes-acc",
+      "assigneeName": "Yohannes Demissie",
+      "startDate": "2026-07-02",
+      "dueDate": "2026-07-20",
+      "status": "In Progress",
+      "priority": "Medium",
+      "timeSpentMinutes": 180
+    }
+  ],
+  "assets": [
+    {
+      "id": "asset-1",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-addis-hq",
+      "name": "Addis HQ Server Stack Control Tower",
+      "category": "IT Equipment",
+      "cost": 450000,
+      "acquisitionDate": "2024-03-12",
+      "salvageValue": 50000,
+      "usefulLifeYears": 5,
+      "accumulatedDepreciation": 180000,
+      "assignedToId": "emp-james-ceo",
+      "assignedToName": "James Kebede",
+      "maintenanceSchedule": {
+        "lastMaintenanceDate": "2026-05-15",
+        "nextMaintenanceDate": "2026-11-15",
+        "intervalMonths": 6,
+        "notes": "Blow out physical dust filters and execute backup sector checks."
+      }
+    },
+    {
+      "id": "asset-2",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-adama",
+      "name": "Isuzu NPR Logistics Delivery Truck",
+      "category": "Vehicles",
+      "cost": 2300000,
+      "acquisitionDate": "2023-01-10",
+      "salvageValue": 300000,
+      "usefulLifeYears": 8,
+      "accumulatedDepreciation": 750000,
+      "assignedToId": "emp-chala-inventory",
+      "assignedToName": "Chala Bekele",
+      "maintenanceSchedule": {
+        "lastMaintenanceDate": "2026-06-01",
+        "nextMaintenanceDate": "2026-10-01",
+        "intervalMonths": 4,
+        "notes": "Engine oil, hydraulic fluid levels, and brake pad inspections."
+      }
+    }
+  ],
+  "tickets": [
+    {
+      "id": "tick-001",
+      "companyId": "comp-james-holdings",
+      "customerName": "Chef Daniel Jenkins (Hilton)",
+      "subject": "Arabic Grade A Shipment Discrepancy",
+      "description": "Our cargo arrived but 2 bags of beans appear slightly damp at base. Requesting immediate replacement sorting.",
+      "category": "Technical",
+      "priority": "High",
+      "status": "In Progress",
+      "createdAt": "2026-07-10T14:35:00Z",
+      "assignedToId": "emp-almaz-sales",
+      "assignedToName": "Almaz Tesfaye",
+      "chatLog": [
+        {
+          "id": "m1",
+          "senderName": "Chef Daniel Jenkins (Hilton)",
+          "senderRole": "Customer",
+          "message": "Hi, we opened our shipment of Grade A Coffee and noticed 2 bags look like they suffered moisture during truck cargo transit.",
+          "timestamp": "2026-07-10T14:35:00Z"
+        },
+        {
+          "id": "m2",
+          "senderName": "James ERP Bot",
+          "senderRole": "AI Bot",
+          "message": "Hello! I am James ERP Bot. I have automatically flagged this ticket as High priority and routed it to our Logistics and Sales representative Almaz Tesfaye. We apologize for the inconvenience and will solve this quickly.",
+          "timestamp": "2026-07-10T14:36:12Z"
+        }
+      ]
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log-40850900",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T09:52:34.950Z"
+    },
+    {
+      "id": "log-23554de0",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T09:52:34.947Z"
+    },
+    {
+      "id": "log-3f6165d0",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "User Login",
+      "details": "Employee Selamawit Alene logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T09:52:32.546Z"
+    },
+    {
+      "id": "log-b4b6a91d",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "User Login",
+      "details": "Employee Selamawit Alene logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T09:52:31.899Z"
+    },
+    {
+      "id": "log-087224b6",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "Log Attendance",
+      "details": "Logged attendance for Almaz Tesfaye on 2026-07-12.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T08:09:17.209Z"
+    },
+    {
+      "id": "log-3eee8eac",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "User Login",
+      "details": "Employee Selamawit Alene logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T08:08:44.517Z"
+    },
+    {
+      "id": "log-6212eb52",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-yohannes-acc",
+      "userName": "Yohannes Demissie",
+      "userRole": "Accountant",
+      "action": "User Login",
+      "details": "Employee Yohannes Demissie logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T08:07:21.284Z"
+    },
+    {
+      "id": "log-e0feb133",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "Adjust Stock",
+      "details": "Adjusted product Arabica Coffee Beans (Premium Grade A) at warehouse branch-addis-hq by 12. Reason: Physical Count Discrepancy",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T08:06:41.037Z"
+    },
+    {
+      "id": "log-7ce7bc18",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T08:05:23.797Z"
+    },
+    {
+      "id": "log-77d3f6f7",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "User Login",
+      "details": "Employee Selamawit Alene logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:57:45.205Z"
+    },
+    {
+      "id": "log-defd66a9",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-yohannes-acc",
+      "userName": "Yohannes Demissie",
+      "userRole": "Accountant",
+      "action": "User Login",
+      "details": "Employee Yohannes Demissie logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:57:37.359Z"
+    },
+    {
+      "id": "log-3ba15fae",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:57:25.095Z"
+    },
+    {
+      "id": "log-30a4b7a3",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-yohannes-acc",
+      "userName": "Yohannes Demissie",
+      "userRole": "Accountant",
+      "action": "Log Attendance",
+      "details": "Logged attendance for James Kebede on 2026-07-12.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:53:27.138Z"
+    },
+    {
+      "id": "log-374981fe",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-yohannes-acc",
+      "userName": "Yohannes Demissie",
+      "userRole": "Accountant",
+      "action": "Log Attendance",
+      "details": "Logged attendance for James Kebede on 2026-07-12.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:53:24.798Z"
+    },
+    {
+      "id": "log-3667a4fc",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-yohannes-acc",
+      "userName": "Yohannes Demissie",
+      "userRole": "Accountant",
+      "action": "User Login",
+      "details": "Employee Yohannes Demissie logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:53:06.558Z"
+    },
+    {
+      "id": "log-f6aedbad",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "User Login",
+      "details": "Employee Selamawit Alene logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:48:57.123Z"
+    },
+    {
+      "id": "log-4efc252f",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "User Login",
+      "details": "Employee Selamawit Alene logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:47:44.712Z"
+    },
+    {
+      "id": "log-17072f43",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:46:20.172Z"
+    },
+    {
+      "id": "log-7f22e1e9",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:46:20.171Z"
+    },
+    {
+      "id": "log-3fc74021",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:46:20.169Z"
+    },
+    {
+      "id": "log-e8aafbca",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:46:20.167Z"
+    },
+    {
+      "id": "log-d5bd3221",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "User Login",
+      "details": "Employee Selamawit Alene logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:46:20.165Z"
+    },
+    {
+      "id": "log-5d25f57d",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:46:20.163Z"
+    },
+    {
+      "id": "log-1bd0e72b",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "User Login",
+      "details": "Employee Selamawit Alene logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:46:20.160Z"
+    },
+    {
+      "id": "log-78640f2c",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "User Login",
+      "details": "Employee Selamawit Alene logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:46:20.158Z"
+    },
+    {
+      "id": "log-0e7563fc",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-selam-hr",
+      "userName": "Selamawit Alene",
+      "userRole": "HR",
+      "action": "User Login",
+      "details": "Employee Selamawit Alene logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:46:20.155Z"
+    },
+    {
+      "id": "log-12427338",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:46:20.153Z"
+    },
+    {
+      "id": "log-9ce1b281",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:45:45.841Z"
+    },
+    {
+      "id": "log-998b96c2",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:45:42.704Z"
+    },
+    {
+      "id": "log-d9f82143",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:45:39.740Z"
+    },
+    {
+      "id": "log-d77f4546",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:45:37.794Z"
+    },
+    {
+      "id": "log-b9f0c97f",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:43:16.012Z"
+    },
+    {
+      "id": "log-4f6b7183",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:43:06.714Z"
+    },
+    {
+      "id": "log-8fd97994",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "User Login",
+      "details": "Employee James Kebede logged into James ERP.",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-07-12T07:43:00.328Z"
+    },
+    {
+      "id": "log-1",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-james-ceo",
+      "userName": "James Kebede",
+      "userRole": "CEO",
+      "action": "Login",
+      "details": "User successfully authenticated via ERP terminal secure session.",
+      "ipAddress": "197.156.75.122",
+      "timestamp": "2026-07-11T09:00:15Z"
+    },
+    {
+      "id": "log-2",
+      "companyId": "comp-james-holdings",
+      "userId": "emp-yohannes-acc",
+      "userName": "Yohannes Demissie",
+      "userRole": "Accountant",
+      "action": "Post Journal Entry",
+      "details": "Posted Journal Entry (id: JE-2026-012) amounting to 280,000 ETB.",
+      "ipAddress": "197.156.75.105",
+      "timestamp": "2026-07-11T11:45:00Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "not-77657b22",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T09:52:34.950Z"
+    },
+    {
+      "id": "not-6a8282d2",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T09:52:34.947Z"
+    },
+    {
+      "id": "not-b8c0d315",
+      "userId": "emp-selam-hr",
+      "title": "User Login",
+      "content": "Employee Selamawit Alene logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T09:52:32.546Z"
+    },
+    {
+      "id": "not-eac98c6b",
+      "userId": "emp-selam-hr",
+      "title": "User Login",
+      "content": "Employee Selamawit Alene logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T09:52:31.899Z"
+    },
+    {
+      "id": "not-bf97fa04",
+      "userId": "emp-selam-hr",
+      "title": "Log Attendance",
+      "content": "Logged attendance for Almaz Tesfaye on 2026-07-12.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T08:09:17.209Z"
+    },
+    {
+      "id": "not-2d1d7442",
+      "userId": "emp-selam-hr",
+      "title": "User Login",
+      "content": "Employee Selamawit Alene logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T08:08:44.517Z"
+    },
+    {
+      "id": "not-b8b72dc3",
+      "userId": "emp-yohannes-acc",
+      "title": "User Login",
+      "content": "Employee Yohannes Demissie logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T08:07:21.284Z"
+    },
+    {
+      "id": "not-b92b8304",
+      "userId": "emp-james-ceo",
+      "title": "Adjust Stock",
+      "content": "Adjusted product Arabica Coffee Beans (Premium Grade A) at warehouse branch-addis-hq by 12. Reason: Physical Count Discrepancy",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T08:06:41.037Z"
+    },
+    {
+      "id": "not-09679307",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T08:05:23.797Z"
+    },
+    {
+      "id": "not-bc51d064",
+      "userId": "emp-selam-hr",
+      "title": "User Login",
+      "content": "Employee Selamawit Alene logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:57:45.205Z"
+    },
+    {
+      "id": "not-4ac34f12",
+      "userId": "emp-yohannes-acc",
+      "title": "User Login",
+      "content": "Employee Yohannes Demissie logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:57:37.359Z"
+    },
+    {
+      "id": "not-9c7c074c",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:57:25.095Z"
+    },
+    {
+      "id": "not-81957cec",
+      "userId": "emp-yohannes-acc",
+      "title": "Log Attendance",
+      "content": "Logged attendance for James Kebede on 2026-07-12.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:53:27.138Z"
+    },
+    {
+      "id": "not-2cbbf84b",
+      "userId": "emp-yohannes-acc",
+      "title": "Log Attendance",
+      "content": "Logged attendance for James Kebede on 2026-07-12.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:53:24.798Z"
+    },
+    {
+      "id": "not-528aed08",
+      "userId": "emp-yohannes-acc",
+      "title": "User Login",
+      "content": "Employee Yohannes Demissie logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:53:06.558Z"
+    },
+    {
+      "id": "not-da2cd83c",
+      "userId": "emp-selam-hr",
+      "title": "User Login",
+      "content": "Employee Selamawit Alene logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:48:57.123Z"
+    },
+    {
+      "id": "not-86ab0b9c",
+      "userId": "emp-selam-hr",
+      "title": "User Login",
+      "content": "Employee Selamawit Alene logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:47:44.712Z"
+    },
+    {
+      "id": "not-28909e46",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:46:20.172Z"
+    },
+    {
+      "id": "not-cf4c8e34",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:46:20.171Z"
+    },
+    {
+      "id": "not-3d5e0ce6",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:46:20.169Z"
+    },
+    {
+      "id": "not-b8f449dd",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:46:20.167Z"
+    },
+    {
+      "id": "not-64322b88",
+      "userId": "emp-selam-hr",
+      "title": "User Login",
+      "content": "Employee Selamawit Alene logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:46:20.165Z"
+    },
+    {
+      "id": "not-246ffd97",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:46:20.163Z"
+    },
+    {
+      "id": "not-4d538ffa",
+      "userId": "emp-selam-hr",
+      "title": "User Login",
+      "content": "Employee Selamawit Alene logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:46:20.160Z"
+    },
+    {
+      "id": "not-d6145d5c",
+      "userId": "emp-selam-hr",
+      "title": "User Login",
+      "content": "Employee Selamawit Alene logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:46:20.158Z"
+    },
+    {
+      "id": "not-c991b622",
+      "userId": "emp-selam-hr",
+      "title": "User Login",
+      "content": "Employee Selamawit Alene logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:46:20.155Z"
+    },
+    {
+      "id": "not-ddd6a661",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:46:20.153Z"
+    },
+    {
+      "id": "not-8ed488c7",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:45:45.841Z"
+    },
+    {
+      "id": "not-c7c6663b",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:45:42.704Z"
+    },
+    {
+      "id": "not-3b1eadac",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:45:39.740Z"
+    },
+    {
+      "id": "not-ba3bebef",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:45:37.794Z"
+    },
+    {
+      "id": "not-bb3328d4",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:43:16.012Z"
+    },
+    {
+      "id": "not-845c6f07",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:43:06.715Z"
+    },
+    {
+      "id": "not-66e033aa",
+      "userId": "emp-james-ceo",
+      "title": "User Login",
+      "content": "Employee James Kebede logged into James ERP.",
+      "type": "In-App",
+      "category": "System",
+      "status": "Unread",
+      "timestamp": "2026-07-12T07:43:00.328Z"
+    },
+    {
+      "id": "not-1",
+      "userId": "emp-james-ceo",
+      "title": "Low Stock Alert: Magna Teff Flour",
+      "content": "Magna Teff stock at Adama Distribution Hub fell below reorder point. Current stock is 3000.",
+      "type": "In-App",
+      "category": "Inventory",
+      "status": "Unread",
+      "timestamp": "2026-07-11T12:00:00Z"
+    },
+    {
+      "id": "not-2",
+      "userId": "emp-james-ceo",
+      "title": "Journal Entry Created",
+      "content": "Accountant Yohannes Demissie created journal entry JE-2026-012.",
+      "type": "In-App",
+      "category": "Finance",
+      "status": "Unread",
+      "timestamp": "2026-07-11T11:46:00Z"
+    }
+  ],
+  "journalEntries": [
+    {
+      "id": "je-2026-012",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-addis-hq",
+      "date": "2026-07-11",
+      "description": "Settle office rental lease invoice for Bole Head Office Building.",
+      "reference": "REF-LEASE-2026",
+      "items": [
+        {
+          "accountId": "coa-rent",
+          "accountName": "Rent & Facilities Expense",
+          "debit": 85000,
+          "credit": 0
+        },
+        {
+          "accountId": "coa-cash",
+          "accountName": "Cash in Bank (CBE Birr/Telebirr)",
+          "debit": 0,
+          "credit": 85000
+        }
+      ],
+      "status": "Posted"
+    },
+    {
+      "id": "je-2026-013",
+      "companyId": "comp-james-holdings",
+      "branchId": "branch-addis-hq",
+      "date": "2026-07-12",
+      "description": "Purchase of high-speed office networking cables and routers.",
+      "reference": "REF-NET-889",
+      "items": [
+        {
+          "accountId": "coa-equip",
+          "accountName": "Machinery & Equipment",
+          "debit": 24500,
+          "credit": 0
+        },
+        {
+          "accountId": "coa-cash",
+          "accountName": "Cash in Bank (CBE Birr/Telebirr)",
+          "debit": 0,
+          "credit": 24500
+        }
+      ],
+      "status": "Draft"
+    }
+  ],
+  "sessions": [
+    {
+      "token": "1cce9fd18d5cda754bb6711df7005a25d8022f869014972d28cd63960c56ab3c",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928580328
+    },
+    {
+      "token": "9c72d3a48adbe88bd25f27e9bb98d9790b17070d4d42f2f9dcd6063e2578532a",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928586714
+    },
+    {
+      "token": "4837cec33964afc0c3b6615fe51a1bd1091dbeca2f67685b4c68ffb190fb56e9",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928596011
+    },
+    {
+      "token": "2b3c12a0a670313158822821e46324b254cb05c68113a264d1c4695c25d26e42",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928737794
+    },
+    {
+      "token": "2b8665045b3f4f6236a10a73f36239e6cc78518d7a4f6349739077062dd66a14",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928739740
+    },
+    {
+      "token": "47edab7efb3e14cc218a3291b26813cf1bba2fab999add4570b7d1680a01b734",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928742704
+    },
+    {
+      "token": "1412695b350eb2c49b4a7d146d8d88daf7bac940e4b30692b720bf24ece16bfe",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928745841
+    },
+    {
+      "token": "c6d54823c4d3ad3504347b5e122f0695d39655ca8214d4aae103140c84584144",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928780153
+    },
+    {
+      "token": "e4d6920f8db493f2dc3e382021e8349c89a8c1e7ba44136a957b335e112bf887",
+      "userId": "emp-selam-hr",
+      "expiry": 1783928780155
+    },
+    {
+      "token": "ad6602c3618e3f86736d62f686760a304e41eddeab7860575560102a53aa2d72",
+      "userId": "emp-selam-hr",
+      "expiry": 1783928780158
+    },
+    {
+      "token": "1e388957f75879f5ac24998395ed6087238bd596bc30c51e28672caed4afb329",
+      "userId": "emp-selam-hr",
+      "expiry": 1783928780160
+    },
+    {
+      "token": "2e72441247174bbf617ca9b832f3f9ea232fd53da8e95dfdfe03ab015e16555c",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928780163
+    },
+    {
+      "token": "eb9752f2f7e5dcf9acd1c93eb9775e64bc4f22a18c373189d78cf7d878253ef7",
+      "userId": "emp-selam-hr",
+      "expiry": 1783928780165
+    },
+    {
+      "token": "63503d9120de9d323bb1226935710c6ae7d860c228352cff731821205903fa72",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928780167
+    },
+    {
+      "token": "7aef3d473dec1d6e926430105f74bbf21a2cb28ee86864bd1fb1fa4cd06ccc67",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928780169
+    },
+    {
+      "token": "1062aeb24aca3b1018ad316236263f1a451df867878c53ec0a175a668a1a3fd2",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928780171
+    },
+    {
+      "token": "72d304738bf6c62c7dc576ddde43d697891d3f95507432a1e3c121b60825a176",
+      "userId": "emp-james-ceo",
+      "expiry": 1783928780172
+    },
+    {
+      "token": "ea421cc2f70fa01eea05499994a70c0fb9b81a98bf9494f92e39e13fce5f624c",
+      "userId": "emp-selam-hr",
+      "expiry": 1783928864712
+    },
+    {
+      "token": "e281f5d545557cc7d0e72aca92f5daf5aed3f67d0c55fea410a7d150e43f30f7",
+      "userId": "emp-selam-hr",
+      "expiry": 1783928937123
+    },
+    {
+      "token": "c02e30b80ac83088cbd791bc5ea4d986c266263ade1867c9ee74d7bff6cbd2e5",
+      "userId": "emp-yohannes-acc",
+      "expiry": 1783929186558
+    },
+    {
+      "token": "ce05a39aedee2efda65a0349db1dcebcf859bf157fc63f55748d9fb82e2e4e53",
+      "userId": "emp-james-ceo",
+      "expiry": 1783929445095
+    },
+    {
+      "token": "f05830bbd0c19012a9bba0bcd33b18eb054a767f841a09abdc605dfaf1ee521a",
+      "userId": "emp-yohannes-acc",
+      "expiry": 1783929457358
+    },
+    {
+      "token": "af27bcca1506ab054a1ed0e327781fff64724641afbf3fdbf0c0424d9850e438",
+      "userId": "emp-selam-hr",
+      "expiry": 1783929465204
+    },
+    {
+      "token": "9c816e7bc4cc8e423336c8fd554db8926159d129a918463b6c0041ea6c63b8dc",
+      "userId": "emp-james-ceo",
+      "expiry": 1783929923796
+    },
+    {
+      "token": "c10f4a2112a15e158834f12d9364ade1d57e311b51bd639f962bad33d803faf0",
+      "userId": "emp-yohannes-acc",
+      "expiry": 1783930041284
+    },
+    {
+      "token": "2c9dd3f08585ad52ff2ff4b5fb29a1741df3e93012566242e33288595b10912d",
+      "userId": "emp-selam-hr",
+      "expiry": 1783930124517
+    },
+    {
+      "token": "4e3766a9f21dc715742725c3ff5acfe823ed655797fd5459c858b0f4e1790f99",
+      "userId": "emp-selam-hr",
+      "expiry": 1783936351898
+    },
+    {
+      "token": "4cbe2d77d9f86bc25e1b3d499ccffaed04f78a5ee1c71b535aba9d2a60177cda",
+      "userId": "emp-selam-hr",
+      "expiry": 1783936352545
+    },
+    {
+      "token": "69a9e7d67a402db8c99eca82d983a3289e7c07f5511c2cd2ff1bc12399e773a4",
+      "userId": "emp-james-ceo",
+      "expiry": 1783936354946
+    },
+    {
+      "token": "dc9fb7a3b584d47bd5bd7746f66bef2ef9625e9e1545252e659c0454234f3208",
+      "userId": "emp-james-ceo",
+      "expiry": 1783936354950
+    }
+  ]
+}
