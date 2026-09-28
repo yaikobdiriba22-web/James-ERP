@@ -7,20 +7,297 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  SUPER_ADMIN
+  CEO
+  HR_MANAGER
+  ACCOUNTANT
+  MANAGER
+  STAFF
+  INVENTORY_OFFICER
+  SALES
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  ON_LEAVE
+  INACTIVE
+}
+
+enum SalesOrderStatus {
+  PENDING
+  CONFIRMED
+  PAID
+  SHIPPED
+  CANCELLED
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum NotificationStatus {
+  UNREAD
+  READ
+}
+
+model Company {
+  id        String   @id @default(cuid())
+  name      String
+  tin       String?
+  currency  String   @default("ETB")
+  address   String?
+  phone     String?
+  email     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  branches   Branch[]
+  employees  Employee[]
+  products   Product[]
+  customers  Customer[]
+  leads      Lead[]
+  salesOrders SalesOrder[]
+  tickets    Ticket[]
+  auditLogs  AuditLog[]
+  notifications Notification[]
+}
+
+model Branch {
+  id        String   @id @default(cuid())
+  companyId String
+  company   Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  name      String
+  address   String?
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  employees Employee[]
+
+  @@index([companyId])
+}
+
+model Department {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+
+  employees Employee[]
+}
+
+model Employee {
+  id          String         @id @default(cuid())
+  companyId   String
+  company     Company        @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  branchId    String?
+  branch      Branch?        @relation(fields: [branchId], references: [id])
+  departmentId String?
+  department  Department?    @relation(fields: [departmentId], references: [id])
+  name        String
+  email       String         @unique
+  phone       String?
+  role        UserRole
+  hireDate    DateTime?
+  salary      Float?
+  status      EmployeeStatus @default(ACTIVE)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  sessions   Session[]
+  auditLogs  AuditLog[]
+  notifications Notification[]
+  createdTickets Ticket[] @relation("CreatedTickets")
+  assignedTickets Ticket[] @relation("AssignedTickets")
+  leads      Lead[]
+
+  @@index([companyId])
+  @@index([email])
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  employeeId String
+  employee  Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([employeeId])
+  @@index([expiresAt])
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  companyId   String
+  company     Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  sku         String   @unique
+  name        String
+  category    String?
+  description String?
+  price       Float
+  cost        Float?
+  barcode     String?
+  qrCode      String?
+  reorderPoint Int?
+  stock       Json?    @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  salesOrderItems SalesOrderItem[]
+
+  @@index([companyId])
+}
+
+model Customer {
+  id        String   @id @default(cuid())
+  companyId String
+  company   Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  name      String
+  email     String?
+  phone     String?
+  address   String?
+  tin       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  salesOrders SalesOrder[]
+  tickets     Ticket[]
+
+  @@index([companyId])
+}
+
+model Lead {
+  id          String   @id @default(cuid())
+  companyId   String
+  company     Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  employeeId  String?
+  employee    Employee? @relation(fields: [employeeId], references: [id], onDelete: SetNull)
+  name        String
+  companyName String?
+  email       String?
+  phone       String?
+  source      String?
+  status      String   @default("New")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([companyId])
+}
+
+model SalesOrder {
+  id          String   @id @default(cuid())
+  companyId   String
+  company     Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  customerId  String
+  customer    Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  branchId    String?
+  date        DateTime @default(now())
+  totalAmount Float    @default(0)
+  status      SalesOrderStatus @default(PENDING)
+  shippingAddress String?
+  gateway     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  items SalesOrderItem[]
+
+  @@index([companyId])
+  @@index([customerId])
+}
+
+model SalesOrderItem {
+  id          String   @id @default(cuid())
+  salesOrderId String
+  salesOrder  SalesOrder @relation(fields: [salesOrderId], references: [id], onDelete: Cascade)
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+  quantity    Int
+  unitPrice   Float
+  total       Float
+  createdAt   DateTime @default(now())
+
+  @@index([salesOrderId])
+}
+
+model Ticket {
+  id          String      @id @default(cuid())
+  companyId   String
+  company     Company     @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  customerId  String?
+  customer    Customer?   @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  subject     String
+  description String
+  category    String      @default("General")
+  priority    String      @default("Medium")
+  status      TicketStatus @default(OPEN)
+  createdById String?
+  createdBy   Employee?   @relation("CreatedTickets", fields: [createdById], references: [id], onDelete: SetNull)
+  assignedToId String?
+  assignedTo  Employee?   @relation("AssignedTickets", fields: [assignedToId], references: [id], onDelete: SetNull)
+  customerName String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  messages TicketMessage[]
+
+  @@index([companyId])
+  @@index([customerId])
+}
+
+model TicketMessage {
+  id        String   @id @default(cuid())
+  ticketId  String
+  ticket    Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  senderName String
+  senderRole String
+  message   String
+  createdAt DateTime @default(now())
+
+  @@index([ticketId])
+}
+
+model Notification {
+  id        String             @id @default(cuid())
+  companyId String
+  company   Company            @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  employeeId String?
+  employee  Employee?          @relation(fields: [employeeId], references: [id], onDelete: SetNull)
+  title     String
+  content   String
+  type      String             @default("In-App")
+  category  String             @default("System")
+  status    NotificationStatus @default(UNREAD)
+  createdAt DateTime           @default(now())
+
+  @@index([employeeId])
+  @@index([companyId])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  companyId String
+  company   Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  employeeId String?
+  employee  Employee? @relation(fields: [employeeId], references: [id], onDelete: SetNull)
+  userName  String
+  userRole  String
+  action    String
+  details   String
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  @@index([companyId])
+  @@index([createdAt])
+}
+
 model ErpState {
   id        String   @id @default("default")
   version   Int      @default(1)
   data      Json
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model Session {
-  token     String   @id
-  userId    String
-  expiresAt DateTime
-  createdAt DateTime @default(now())
-
-  @@index([userId])
-  @@index([expiresAt])
 }
