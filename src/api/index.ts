@@ -4,6 +4,8 @@ import fs from "fs";
 import crypto from "crypto";
 import { GoogleGenAI } from "@google/genai";
 
+import { prisma } from "../src/db/prisma";
+
 import {
   UserRole,
   Employee,
@@ -90,34 +92,75 @@ let dbState: ERPDatabase = {
   sessions: [],
 };
 
-function loadDatabase() {
+async function loadDatabase() {
+  if (!process.env.DATABASE_URL) {
+    try {
+      const dir = path.dirname(DB_FILE);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+      if (fs.existsSync(DB_FILE)) {
+        const content = fs.readFileSync(DB_FILE, "utf-8");
+        dbState = JSON.parse(content);
+        console.log("James ERP database loaded successfully from local storage.");
+      } else {
+        saveDatabase();
+        console.log("James ERP database initialized with seeded corporate data.");
+      }
+    } catch (error) {
+      console.error("Failed to load ERP database from local storage:", error);
+    }
+    return;
+  }
+
   try {
-    const dir = path.dirname(DB_FILE);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
+    const row = await prisma.erpState.findUnique({ where: { id: "default" } });
+    if (row && row.data && typeof row.data === "object") {
+      dbState = row.data as ERPDatabase;
+      console.log("James ERP database loaded successfully from PostgreSQL.");
+      return;
     }
-    if (fs.existsSync(DB_FILE)) {
-      const content = fs.readFileSync(DB_FILE, "utf-8");
-      dbState = JSON.parse(content);
-      console.log("James ERP database loaded successfully from storage.");
-    } else {
-      saveDatabase();
-      console.log("James ERP database initialized with seeded corporate data.");
-    }
+
+    await saveDatabase();
+    console.log("James ERP database initialized with seeded corporate data in PostgreSQL.");
   } catch (error) {
-    console.error("Failed to load ERP database:", error);
+    console.error("Failed to load ERP database from PostgreSQL:", error);
   }
 }
 
-function saveDatabase() {
+async function saveDatabase() {
+  if (!process.env.DATABASE_URL) {
+    try {
+      const dir = path.dirname(DB_FILE);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+      fs.writeFileSync(DB_FILE, JSON.stringify(dbState, null, 2), "utf-8");
+    } catch (error) {
+      console.error("Failed to save ERP database to local storage:", error);
+    }
+    return;
+  }
+
   try {
-    fs.writeFileSync(DB_FILE, JSON.stringify(dbState, null, 2), "utf-8");
+    await prisma.erpState.upsert({
+      where: { id: "default" },
+      update: {
+        data: dbState,
+        version: { increment: 1 },
+      },
+      create: {
+        id: "default",
+        data: dbState,
+        version: 1,
+      },
+    });
   } catch (error) {
-    console.error("Failed to save ERP database:", error);
+    console.error("Failed to save ERP database to PostgreSQL:", error);
   }
 }
 
-loadDatabase();
+const databaseReady = loadDatabase();
 
 const geminiApiKey = process.env.GEMINI_API_KEY || "";
 let ai: GoogleGenAI | null = null;
@@ -160,12 +203,21 @@ function logActivity(companyId: string, userId: string, userName: string, role: 
     timestamp: new Date().toISOString(),
   };
   dbState.notifications.unshift(newNot);
-  saveDatabase();
+  void saveDatabase();
 }
 
 export function createApiRouter() {
   const app = express();
   app.use(express.json());
+
+  app.use(async (_req: Request, _res: Response, next: NextFunction) => {
+    try {
+      await databaseReady;
+      next();
+    } catch (error) {
+      next(error);
+    }
+  });
 
   app.use((req: Request, res: Response, next: NextFunction) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -203,7 +255,6 @@ export function createApiRouter() {
     next();
   };
 
-  // AUTHENTICATION ENDPOINTS
   app.post("/api/auth/login", (req: Request, res: Response) => {
     const { email, password } = req.body;
 
@@ -280,10 +331,10 @@ export function createApiRouter() {
       leaves: [],
       performance: [],
       training: [],
-    };
+    } as any;
 
     dbState.employees.push(newEmp);
-    saveDatabase();
+    void saveDatabase();
 
     res.json({ message: "Registration successful. Please login.", user: newEmp });
   });
@@ -301,28 +352,25 @@ export function createApiRouter() {
     const token = authHeader && authHeader.split(" ")[1];
     if (token) {
       dbState.sessions = dbState.sessions.filter((s) => s.token !== token);
-      saveDatabase();
+      void saveDatabase();
     }
     res.json({ success: true });
   });
 
-  // ERP CORE DATA
   app.get("/api/erp/data", authenticateToken, (req: Request, res: Response) => {
     res.json(dbState);
   });
 
-  // NOTIFICATIONS
   app.post("/api/erp/notifications/read", authenticateToken, (req: Request, res: Response) => {
     const { id } = req.body;
     const notif = dbState.notifications.find((n) => n.id === id);
     if (notif) {
       notif.status = "Read";
-      saveDatabase();
+      void saveDatabase();
     }
     res.json({ success: true });
   });
 
-  // HR ACTIONS
   app.post("/api/erp/hr/attendance", authenticateToken, (req: Request, res: Response) => {
     const { employeeId, checkIn, checkOut, date, status } = req.body;
     const empIndex = dbState.employees.findIndex((e) => e.id === employeeId);
@@ -338,12 +386,12 @@ export function createApiRouter() {
       employeeId,
       date: date || new Date().toISOString().split("T")[0],
       checkIn: checkIn || "08:30",
-      checkOut: checkOut,
+      checkOut,
       status: (status || "Present") as any,
     };
 
     employee.attendance.push(newRecord);
-    saveDatabase();
+    void saveDatabase();
 
     logActivity(
       employee.companyId,
@@ -380,7 +428,7 @@ export function createApiRouter() {
     };
 
     employee.leaves.unshift(newLeave);
-    saveDatabase();
+    void saveDatabase();
 
     logActivity(
       employee.companyId,
@@ -419,7 +467,7 @@ export function createApiRouter() {
       employee.status = "Active";
     }
 
-    saveDatabase();
+    void saveDatabase();
 
     logActivity(
       employee.companyId,
@@ -434,7 +482,6 @@ export function createApiRouter() {
     res.json({ success: true, leave });
   });
 
-  // FINANCE ACTIONS
   app.post("/api/erp/finance/journal", authenticateToken, (req: Request, res: Response) => {
     const { description, reference, date, items } = req.body;
     const user = (req as any).user;
@@ -465,7 +512,7 @@ export function createApiRouter() {
       reference,
       items,
       status: "Posted",
-    };
+    } as any;
 
     items.forEach((item: any) => {
       const coa = dbState.chartOfAccounts.find((c) => c.id === item.accountId);
@@ -482,7 +529,7 @@ export function createApiRouter() {
     });
 
     dbState.journalEntries.unshift(newJE);
-    saveDatabase();
+    void saveDatabase();
 
     logActivity(
       user.companyId,
@@ -497,7 +544,6 @@ export function createApiRouter() {
     res.json({ success: true, journalEntry: newJE });
   });
 
-  // INVENTORY ACTIONS
   app.post("/api/erp/inventory/product", authenticateToken, (req: Request, res: Response) => {
     const { name, sku, category, price, cost, description, initialStock, warehouseId, reorderPoint } = req.body;
     const user = (req as any).user;
@@ -525,10 +571,10 @@ export function createApiRouter() {
         [warehouseId || "wh-addis-main"]: parseInt(initialStock) || 0,
       },
       reorderPoint: parseInt(reorderPoint) || 10,
-    };
+    } as any;
 
     dbState.products.push(newProd);
-    saveDatabase();
+    void saveDatabase();
 
     logActivity(
       user.companyId,
@@ -557,7 +603,7 @@ export function createApiRouter() {
     const currentStock = product.stock[warehouseId] || 0;
     product.stock[warehouseId] = Math.max(0, currentStock + adjQty);
 
-    saveDatabase();
+    void saveDatabase();
 
     logActivity(
       user.companyId,
@@ -572,7 +618,6 @@ export function createApiRouter() {
     res.json({ success: true, product });
   });
 
-  // SALES ACTIONS
   app.post("/api/erp/sales/order", authenticateToken, (req: Request, res: Response) => {
     const { customerId, items, shippingAddress, gateway } = req.body;
     const user = (req as any).user;
@@ -622,7 +667,7 @@ export function createApiRouter() {
       totalAmount,
       status: gateway ? "Paid" : "Confirmed",
       shippingAddress: shippingAddress || customer.address,
-    };
+    } as any;
 
     const arAcc = dbState.chartOfAccounts.find((c) => c.code === "1200");
     const revAcc = dbState.chartOfAccounts.find((c) => c.code === "4000");
@@ -630,7 +675,7 @@ export function createApiRouter() {
     if (revAcc) revAcc.balance += totalAmount;
 
     dbState.salesOrders.unshift(newSO);
-    saveDatabase();
+    void saveDatabase();
 
     logActivity(
       user.companyId,
@@ -660,15 +705,14 @@ export function createApiRouter() {
       source: source || "Web",
       assignedToId: user.id,
       assignedToName: user.name,
-    };
+    } as any;
 
     dbState.leads.unshift(newLead);
-    saveDatabase();
+    void saveDatabase();
 
     res.json({ success: true, lead: newLead });
   });
 
-  // PROJECTS & TASKS
   app.post("/api/erp/projects/task", authenticateToken, (req: Request, res: Response) => {
     const { projectId, title, description, assigneeId, dueDate, priority } = req.body;
     const user = (req as any).user;
@@ -694,10 +738,10 @@ export function createApiRouter() {
       status: "Todo",
       priority: priority || "Medium",
       timeSpentMinutes: 0,
-    };
+    } as any;
 
     dbState.tasks.push(newTask);
-    saveDatabase();
+    void saveDatabase();
 
     logActivity(
       user.companyId,
@@ -725,12 +769,11 @@ export function createApiRouter() {
     if (timeSpent) {
       task.timeSpentMinutes += parseInt(timeSpent);
     }
-    saveDatabase();
+    void saveDatabase();
 
     res.json({ success: true, task });
   });
 
-  // HELP DESK & TICKETS
   app.post("/api/erp/tickets/message", authenticateToken, (req: Request, res: Response) => {
     const { ticketId, message } = req.body;
     const user = (req as any).user;
@@ -751,7 +794,7 @@ export function createApiRouter() {
 
     ticket.chatLog.push(userMsg);
     ticket.status = "In Progress";
-    saveDatabase();
+    void saveDatabase();
 
     if (ai) {
       setTimeout(async () => {
@@ -780,7 +823,7 @@ export function createApiRouter() {
           const freshTicket = dbState.tickets.find((t) => t.id === ticketId);
           if (freshTicket) {
             freshTicket.chatLog.push(aiMsg);
-            saveDatabase();
+            void saveDatabase();
           }
         } catch (e) {
           console.error("AI help desk responder error:", e);
@@ -791,7 +834,6 @@ export function createApiRouter() {
     res.json({ success: true, ticket });
   });
 
-  // AI BUSINESS INTELLIGENCE
   app.post("/api/gemini/chat", authenticateToken, async (req: Request, res: Response) => {
     const { prompt, history } = req.body;
 
